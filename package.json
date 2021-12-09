@@ -9,6 +9,7 @@
   "author": "Chase - chse.dev",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^13.3.1"
+    "discord.js": "^13.3.1",
+    "puppeteer": "^12.0.1"
   }
 }

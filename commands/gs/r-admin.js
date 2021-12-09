@@ -1,4 +1,5 @@
 const { seniorStaffID } = require('../../config.json');
+const puppeteer = require('puppeteer');
 
 module.exports = {
     name: 'radmin',
@@ -8,24 +9,21 @@ module.exports = {
         let seniorStaff = message.guild.roles.cache.find(r => r.id === seniorStaffID);
         if (!message.member.roles.cache.has(seniorStaff.id)) return;
 
-        const { spawn, exec } = require('child_process');
-        const bat = spawn('cmd.exe', ['/c', 'C:\\Scripts\\iw4ma-restart.bat']);
-
-        bat.stdout.on('data', (data) =>
+        try
         {
-            console.log(data.toString());
-        });
-
-        bat.stderr.on('data', (data) =>
+            // Use Puppeteer to open a new browser window (127.0.0.1:1624/Console)
+            const browser = await puppeteer.launch();
+            const page = await browser.newPage();
+            await page.goto('http://127.0.0.1:1624/Console');
+            await page.type('#console_command_value', '!restart');
+            await page.keyboard.press('Enter');
+            await browser.close();
+            message.channel.send('Attempted to restart...');
+        }
+        catch (err)
         {
-            console.error(data.toString());
-        });
-
-        bat.on('exit', (code) =>
-        {
-            console.log(`Child exited with code ${ code }`);
-        });
-
-        message.channel.send('Attempted to restart...');
+            console.log(err);
+            return;
+        }
     }
 };

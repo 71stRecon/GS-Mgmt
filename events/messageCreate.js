@@ -1,13 +1,13 @@
-const { prefix, seniorStaffID } = require('../config.json');
+const { prefix } = require(`../config.json`);
 
 module.exports = {
-    name: 'messageCreate',
+    name: `messageCreate`,
     async execute(message, Discord, client)
     {
-        if (message.channel.type.toLowerCase() == 'dm') return; // Don't respond/attempt to run commands in DMs.
+        if (message.channel.type.toLowerCase() === `dm`) return; // Don't respond/attempt to run commands in DMs.
 
         // Prepare multiple prefix(es)
-        const isPrefix = prefix.find(p => message.content.startsWith(p));
+        const isPrefix = prefix.find((p) => message.content.startsWith(p));
 
         // Command Handling
         if ((isPrefix)
@@ -18,7 +18,7 @@ module.exports = {
             const commandName = args.shift().toLowerCase();
 
             const command = client.commands.get(commandName)
-                || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
+                || client.commands.find((cmd) => cmd.aliases && cmd.aliases.includes(commandName));
 
             if (!command) return;
 
@@ -38,7 +38,6 @@ module.exports = {
                 if (message.deletable) message.delete().catch(console.error);
             } catch (error)
             {
-                debug.log(error);
                 if (message.deletable) message.delete().catch(console.error);
             }
         }

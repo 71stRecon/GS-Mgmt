@@ -1,0 +1,89 @@
+{
+    "env": {
+        "commonjs": true,
+        "es2021": true,
+        "node": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "airbnb-base"
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest"
+    },
+    "rules": {
+        "no-unused-vars": "error",
+        "no-misleading-character-class": "off",
+        "no-control-regex": "off",
+        "no-useless-escape": "off",
+        "no-redeclare": "off",
+        "quotes": [
+            "error",
+            "backtick"
+        ],
+        "camelcase": [
+            "error",
+            {
+                "properties": "always"
+            }
+        ],
+        "indent": [
+            "error",
+            4,
+            {
+                "SwitchCase": 1
+            }
+        ],
+        "max-len": [
+            "error",
+            {
+                "code": 160,
+                "ignoreUrls": true,
+                "ignoreComments": true,
+                "ignoreStrings": true,
+                "ignoreTemplateLiterals": true
+            }
+        ],
+        "no-console": "off",
+        "no-restricted-syntax": "off",
+        "brace-style": "off",
+        "template-curly-spacing": "off",
+        "import/no-dynamic-require": "off",
+        "global-require": "off",
+        "no-use-before-define": "off",
+        "comma-dangle": "off",
+        "consistent-return": "off",
+        "curly": [
+            "error",
+            "multi-or-nest"
+        ],
+        "prefer-arrow-callback": "off",
+        "nonblock-statement-body-position": "off",
+        "vars-on-top": "off",
+        "no-plusplus": [
+            "error",
+            {
+                "allowForLoopAfterthoughts": true
+            }
+        ],
+        "prefer-spread": "off",
+        "no-await-in-loop": "off",
+        "no-shadow": "off",
+        "no-var": "off",
+        "no-loop-func": "off",
+        "func-names": "off",
+        "prefer-destructuring": "off",
+        "block-scoped-var": "off",
+        "no-param-reassign": "off",
+        "no-restricted-globals": "off"
+    },
+    "globals": {
+        "reactionMessageIds": "writable",
+        "stickerIds": "writable",
+        "secretKeyIds": "writable",
+        "getInfoById": "readonly",
+        "getConfiguration": "readonly",
+        "setInfo": "writable",
+        "setConfiguration": "writable"
+    }
+}

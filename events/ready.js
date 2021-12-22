@@ -1,7 +1,7 @@
 module.exports = {
-    name: 'ready',
+    name: `ready`,
     once: true,
-    async execute(client, Discord)
+    async execute(client)
     {
         // cache stuff (this doesn't take long at all)
         client.guilds.fetch()
@@ -11,24 +11,23 @@ module.exports = {
                 const guildId = client.guilds.cache.first().id;
                 const guild = client.guilds.cache.get(guildId);
                 guild.roles.fetch()
-                    .catch(function (err)
+                    .catch(function ()
                     {
-                        console.log('Could not cache roles.');
+                        console.log(`Could not cache roles.`);
                     });
             })
-            .catch(function (err)
+            .catch(function ()
             {
-                console.log('Could not cache guilds.');
+                console.log(`Could not cache guilds.`);
             });
 
         if (client.guilds.cache.size > 1)
-        {
-            throw new Error("This bot does not support multi-guild!");
-        } else if (client.guilds.cache.size === 0)
-        {
-            throw new Error("Please add this bot to a server before starting it!");
-        }
 
-        console.log("Bot is ready!");
+            throw new Error(`This bot does not support multi-guild!`);
+        else if (client.guilds.cache.size === 0)
+
+            throw new Error(`Please add this bot to a server before starting it!`);
+
+        console.log(`Bot is ready!`);
     },
 };

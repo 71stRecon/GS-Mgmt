@@ -4,6 +4,7 @@
 <a href="https://github.com/ChxseH/71stRecon-Mgmt/stargazers"><img alt="GitHub stars" src="https://badges.chse.dev:/github/stars/ChxseH/71stRecon-Mgmt"></a>
 <a href="https://github.com/ChxseH/71stRecon-Mgmt/issues"><img alt="GitHub issues" src="https://badges.chse.dev:/github/issues/ChxseH/71stRecon-Mgmt"></a>
 <a href="https://github.com/ChxseH/71stRecon-Mgmt/network"><img alt="GitHub forks" src="https://badges.chse.dev:/github/forks/ChxseH/71stRecon-Mgmt"></a>
+<a href="https://github.com/ChxseH/71stRecon-Mgmt/actions/workflows/linter.yml"><img alt="GitHub Actions Status" src="https://github.com/ChxseH/71stRecon-Mgmt/actions/workflows/linter.yml/badge.svg"></a>
 </h1></div>
 
 # Table of Contents <!-- omit in toc -->

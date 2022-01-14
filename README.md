@@ -1,10 +1,10 @@
 <div align="center">
 <h1><a href="https://71strecon.net/discord">71st Recon Management Bot</a><br>
-<a href="https://github.com/ChxseH/71stRecon-Mgmt"><img alt="GitHub license" src="https://badges.chse.dev:/github/license/ChxseH/71stRecon-Mgmt"></a>
-<a href="https://github.com/ChxseH/71stRecon-Mgmt/stargazers"><img alt="GitHub stars" src="https://badges.chse.dev:/github/stars/ChxseH/71stRecon-Mgmt"></a>
-<a href="https://github.com/ChxseH/71stRecon-Mgmt/issues"><img alt="GitHub issues" src="https://badges.chse.dev:/github/issues/ChxseH/71stRecon-Mgmt"></a>
-<a href="https://github.com/ChxseH/71stRecon-Mgmt/network"><img alt="GitHub forks" src="https://badges.chse.dev:/github/forks/ChxseH/71stRecon-Mgmt"></a>
-<a href="https://github.com/ChxseH/71stRecon-Mgmt/actions/workflows/linter.yml"><img alt="GitHub Actions Status" src="https://github.com/ChxseH/71stRecon-Mgmt/actions/workflows/linter.yml/badge.svg"></a>
+<a href="https://github.com/71stRecon/GS-Mgmt"><img alt="GitHub license" src="https://img.shields.io/github/license/71stRecon/GS-Mgmt"></a>
+<a href="https://github.com/71stRecon/GS-Mgmt/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/71stRecon/GS-Mgmt"></a>
+<a href="https://github.com/71stRecon/GS-Mgmt/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/71stRecon/GS-Mgmt"></a>
+<a href="https://github.com/71stRecon/GS-Mgmt/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/71stRecon/GS-Mgmt"></a>
+<a href="https://github.com/71stRecon/GS-Mgmt/actions/workflows/linter.yml"><img alt="GitHub Actions Status" src="https://github.com/71stRecon/GS-Mgmt/actions/workflows/linter.yml/badge.svg"></a>
 </h1></div>
 
 # Table of Contents <!-- omit in toc -->
@@ -23,8 +23,8 @@
 1. Create a new [Discord Bot](https://discord.com/developers/applications).
 2. Make it a Bot account.
 3. Enable all Privileged Gateway Intents.
-4. `git clone https://github.com/ChxseH/71stRecon-Mgmt.git`
-5. `cd 71stRecon-Mgmt`
+4. `git clone https://github.com/71stRecon/GS-Mgmt.git`
+5. `cd GS-Mgmt`
 6. `npm i`
 7. Copy the example config into the expected file name:
 ```bash

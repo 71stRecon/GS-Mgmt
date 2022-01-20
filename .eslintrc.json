@@ -75,15 +75,19 @@
         "prefer-destructuring": "off",
         "block-scoped-var": "off",
         "no-param-reassign": "off",
-        "no-restricted-globals": "off"
-    },
-    "globals": {
-        "reactionMessageIds": "writable",
-        "stickerIds": "writable",
-        "secretKeyIds": "writable",
-        "getInfoById": "readonly",
-        "getConfiguration": "readonly",
-        "setInfo": "writable",
-        "setConfiguration": "writable"
+        "no-restricted-globals": "off",
+        "no-multiple-empty-lines": [
+            "error",
+            {
+                "max": 1,
+                "maxBOF": 0,
+                "maxEOF": 1
+            }
+        ],
+        "padded-blocks": [
+            "error",
+            "never"
+        ],
+        "default-case": "off"
     }
 }

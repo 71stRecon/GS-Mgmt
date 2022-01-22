@@ -2,7 +2,7 @@ const { seniorStaffID } = require(`../../config.json`);
 const { spawn } = require(`child_process`);
 
 module.exports = {
-    name: `restart`,
+    name: `restartgs`,
     description: `Restarts various Game Servers.`,
     defaultPermission: false,
     permission: [`KICK_MEMBERS`],
@@ -50,7 +50,7 @@ module.exports = {
 
         const seniorStaff = interaction.guild.roles.cache.find((r) => r.id === seniorStaffID);
         if (!interaction.member.roles.cache.has(seniorStaff.id))
-            return interaction.reply(`You do not have permission to use this command.`);
+            return interaction.followUp(`You do not have permission to use this command.`);
 
         switch (interaction.options.getSubcommand())
         {

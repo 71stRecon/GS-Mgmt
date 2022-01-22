@@ -26,15 +26,5 @@
 4. `git clone https://github.com/71stRecon/GS-Mgmt.git`
 5. `cd GS-Mgmt`
 6. `npm i`
-7. Copy the example config into the expected file name:
-```bash
-# Unix
-cp config.json.example config.json
-```
-```batch
-:: Windows
-copy config.json.example config.json
-```
-8. Edit `config.json` with the configuration.
-9. Invite the Bot to your Server.
-10. `npm start` (or `pm2 start npm --name "bot" -- start`)
+7. For the initial setup, use `npm start`. After initial setup is completed you can use `pm2 start npm --name "gs-bot" -- start` to keep the bot running.
+8. Invite the bot to your server. (Link will be in the console after the bot is setup, if you want the link again, use `/invite` in the server.)

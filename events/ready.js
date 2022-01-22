@@ -39,9 +39,15 @@ module.exports = {
             });
 
         if (client.guilds.cache.size === 0)
-            throw new Error(`Please add this bot to a server before starting it!\nhttps://discord.com/api/oauth2/authorize?client_id=${ client.user.id }&permissions=8&scope=bot%20applications.commands`);
+        {
+            console.error(`Please add this bot to a server before starting it!\nhttps://discord.com/api/oauth2/authorize?client_id=${ client.user.id }&permissions=8&scope=bot%20applications.commands`);
+            process.exit(1);
+        }
         if (client.guilds.cache.size > 1)
-            throw new Error(`This bot does not support multi-guild.`);
+        {
+            console.error(`ERROR: This bot does not support multi-guild.\nPlease remove it from every guild except one.`);
+            process.exit(1);
+        }
 
         console.log(`Bot is ready!`);
     },

@@ -49,7 +49,8 @@ module.exports = {
         await interaction.deferReply();
 
         const seniorStaff = interaction.guild.roles.cache.find((r) => r.id === seniorStaffID);
-        if (!interaction.member.roles.cache.has(seniorStaff.id))
+        const guildOwner = interaction.guild.ownerId;
+        if (!interaction.member.roles.cache.has(seniorStaff.id) && interaction.member.id !== guildOwner)
             return interaction.followUp(`You do not have permission to use this command.`);
 
         switch (interaction.options.getSubcommand())

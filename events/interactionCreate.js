@@ -1,5 +1,3 @@
-const debug = require(`../handlers/debug`);
-
 module.exports = {
     name: `interactionCreate`,
     async execute(interaction, Discord, client)
@@ -12,7 +10,7 @@ module.exports = {
                 return command.execute(interaction, client, Discord);
             } catch (error)
             {
-                debug.log(error);
+                console.error(error);
             }
         }
     },

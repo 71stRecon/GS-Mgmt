@@ -18,12 +18,9 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Install Dependencies
+        run: |
+          npm install
+
       - name: Lint Code Base
-        uses: github/super-linter/slim@v4
-        env:
-          VALIDATE_ALL_CODEBASE: false
-          DEFAULT_BRANCH: main
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          LINTER_RULES_PATH: /
-          JAVASCRIPT_ES_CONFIG_FILE: .eslintrc.json
-          VALIDATE_JAVASCRIPT_ES: true
+        run: npx eslint . --ext .js,.jsx,.ts,.tsx

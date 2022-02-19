@@ -1,17 +1,26 @@
-const fs = require(`fs`);
+import fs from "node:fs";
+import { createRequire } from "node:module";
+import Discord from "discord.js";
+
+export const commands = [];
+
+const require = createRequire(import.meta.url);
 
 // inital setup process and token validation
 (async () =>
 {
     await initSetup();
-    const { token } = require(`./config.json`);
-    checkToken(token);
-})();
 
-const Discord = require(`discord.js`);
+    const { token } = require(`./config.json`);
+    if (token.length < 50)
+    {
+        console.log(`Invalid token length detected. Please check your config.json file.`);
+        process.exit(1);
+    }
+})();
 const { token } = require(`./config.json`);
 
-async function initSetup()
+export async function initSetup()
 {
     if (fs.existsSync(`./config.json`))
         return; // we already have a config file
@@ -19,6 +28,7 @@ async function initSetup()
     fs.copyFileSync(`./config.json.example`, `./config.json`);
 
     const prompt = require(`prompt-sync`)({ sigint: true });
+
     let token = ``;
     do
         token = prompt(`Please enter your bot token: `);
@@ -32,16 +42,7 @@ async function initSetup()
     const config = require(`./config.json`);
     config.token = token.trim();
     config.seniorStaffID = seniorStaffID.trim();
-    fs.writeFileSync(`./config.json`, JSON.stringify(config, null, 4)); // save settings to config
-}
-
-function checkToken(token)
-{
-    if (token.length < 50)
-    {
-        console.log(`Invalid token length detected. Please check your config.json file.`);
-        process.exit(1);
-    }
+    fs.writeFileSync(`./config.json`, JSON.stringify(config, undefined, 4)); // save settings to config
 }
 
 const client = new Discord.Client({
@@ -58,12 +59,13 @@ const client = new Discord.Client({
 });
 
 // load files
-(() =>
+(async () =>
 {
     // slash commands
-    exports.commands = [];
     client.commands = new Discord.Collection();
-    const commandFolders = fs.readdirSync(`./commands`);
+
+    const commandFolders = fs.readdirSync(`./commands/`);
+
     for (const folder of commandFolders)
     {
         const commandFiles = fs.readdirSync(`./commands/${ folder }`).filter((file) => file.endsWith(`.js`));
@@ -71,9 +73,10 @@ const client = new Discord.Client({
         {
             try
             {
-                const command = require(`./commands/${ folder }/${ file }`);
+                let command = await import(`./commands/${ folder }/${ file }`);
+                command = command.default || command;
                 client.commands.set(command.name, command);
-                this.commands.push(command);
+                commands.push(command);
             }
             catch (error)
             {
@@ -81,20 +84,23 @@ const client = new Discord.Client({
             }
         }
     }
+
     console.log(`Commands loaded.`);
 
     // events
     const eventFiles = fs.readdirSync(`./events`).filter((file) => file.endsWith(`.js`));
     for (const file of eventFiles)
     {
-        const event = require(`./events/${ file }`);
+        let event = await import(`./events/${ file }`);
+        event = event.default || event;
         if (event.once)
-            client.once(event.name, (...args) => event.execute(...args, Discord, client));
+            client.once(event.name, (...ourArguments) => event.execute(...ourArguments, Discord, client));
         else
-            client.on(event.name, (...args) => event.execute(...args, Discord, client));
+            client.on(event.name, (...ourArguments) => event.execute(...ourArguments, Discord, client));
     }
 })();
 
+// catch errors
 process.on(`unhandledRejection`, (error) =>
 {
     console.error(`Unhandled Rejection:`, error);

@@ -1,7 +1,10 @@
-const { seniorStaffID } = require(`../../config.json`);
-const { spawn } = require(`child_process`);
+import { createRequire } from "node:module";
+import { spawn } from "node:child_process";
 
-module.exports = {
+const require = createRequire(import.meta.url);
+const { seniorStaffID } = require(`../../config.json`);
+
+export default {
     name: `restartgs`,
     description: `Restarts various Game Servers.`,
     defaultPermission: false,
@@ -173,9 +176,9 @@ module.exports = {
                     await browser.close();
                     interaction.followUp(`Attempted to restart IW4MAdmin...`);
                 }
-                catch (err)
+                catch (error)
                 {
-                    console.log(err);
+                    console.log(error);
                     interaction.followUp(`Failed to restart IW4MAdmin...`);
                 }
                 break;

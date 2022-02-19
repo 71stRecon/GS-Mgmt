@@ -16,7 +16,7 @@
 
 ### Requirements  
 - [Git](https://git-scm.com/)
-- [Node.js](https://nodejs.org/) >= v16.6.0
+- [Node.js](https://nodejs.org/) >= v16.14.0
 - [pm2](https://www.npmjs.com/package/pm2) (`npm i -g pm2`)
 
 ### Setup  
@@ -27,4 +27,4 @@
 5. `cd GS-Mgmt`
 6. `npm i`
 7. For the initial setup, use `npm start`. After initial setup is completed you can use `pm2 start npm --name "gs-bot" -- start` to keep the bot running.
-8. Invite the bot to your server. (Link will be in the console after the bot is setup, if you want the link again, use `/invite` in the server.)
+8. Invite the bot to your server. (Link will be in the console after the bot is setup.)

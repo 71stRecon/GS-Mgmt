@@ -1,15 +1,18 @@
-module.exports = {
+/* eslint-disable unicorn/no-array-reduce */
+
+export default {
     slashPermissions
 };
 
-async function slashPermissions(command, guild, array)
+export async function slashPermissions(command, guild, array)
 {
     const Roles = (commandName) =>
     {
         const cmdPerms = array.find(
             (c) => c.name === commandName
         ).permission;
-        if (!cmdPerms) return null;
+        if (!cmdPerms)
+            return;
 
         return guild.roles.cache
             .filter((role) => role.permissions.has(cmdPerms) && !role.managed);
@@ -18,9 +21,13 @@ async function slashPermissions(command, guild, array)
     const fullPermissions = command.reduce((accumulator, command) =>
     {
         const roles = Roles(command.name);
-        if (!roles) return accumulator;
+        if (!roles)
+            return accumulator;
 
-        const permissions = roles.reduce((a, command) => [...a, { id: command.id, type: `ROLE`, permission: true }], []);
+        const permissions = [];
+        permissions.push({ id: guild.ownerId, type: `USER`, permission: true });
+        const temporary = roles.reduce((a, command) => [...a, { id: command.id, type: `ROLE`, permission: true }], []);
+        permissions.push(...temporary.slice(0, 9)); // Fix for discord's max of 10 permissions per role
 
         return [...accumulator, { id: command.id, permissions }];
     }, []);

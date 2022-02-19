@@ -1,18 +1,20 @@
-module.exports = {
-    deploySlashCommands,
+import { commands } from "../index.js";
+import { slashPermissions } from "./slashPermissions.js";
+
+export default {
+    deploySlashCommands
 };
 
-async function deploySlashCommands(guild)
+export async function deploySlashCommands(guild)
 {
-    const { commands } = require(`../index`);
-    const slashPermissions = require(`./slashPermissions`);
-    guild.commands.set(commands)
+    const allCommands = commands;
+    guild.commands.set(allCommands)
         .then(async (command) =>
         {
-            slashPermissions.slashPermissions(command, guild, commands);
+            slashPermissions(command, guild, allCommands);
         })
-        .catch(function (err)
+        .catch(function (error)
         {
-            console.error(`Error setting slashcommands for ${ guild.name }.`, err);
+            console.error(`Error setting slashcommands for ${ guild.name }.`, error);
         });
 }

@@ -16,7 +16,7 @@
     "dependencies": {
         "discord.js": "^13.6.0",
         "prompt-sync": "^4.1.6",
-        "puppeteer": "^13.4.1",
+        "puppeteer": "^13.5.0",
         "node-fetch": "^3.2.0"
     },
     "devDependencies": {

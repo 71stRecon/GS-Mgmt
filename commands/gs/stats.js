@@ -57,12 +57,12 @@ export async function updateMessage(guildId, channelId, messageId, isFresh, clie
         let strippedHostname = server.hostname.replace(/\^\d/g, ``);
         strippedHostname = strippedHostname.slice(0, 21);
         data.push({
-            serverName: strippedHostname,
-            playerCount: `${ server.clientNum }/${ server.maxClients }`,
-            map: server.currentMap.alias,
-            gameMode: server.currentGameType.name,
-            game: server.game,
-            connectCommand: `/connect ${ server.ip }:${ server.port }`,
+            Name: strippedHostname,
+            Players: `${ server.clientNum }/${ server.maxClients }`,
+            Map: server.currentMap.alias,
+            Gamemode: server.currentGameType.name,
+            Game: server.game,
+            Connect_Command: `/connect ${ server.ip }:${ server.port }`,
         });
     }
 

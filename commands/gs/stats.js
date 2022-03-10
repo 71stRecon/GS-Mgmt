@@ -55,7 +55,7 @@ export async function updateMessage(guildId, channelId, messageId, isFresh, clie
     for (const server of json)
     {
         let strippedHostname = server.hostname.replace(/\^\d/g, ``);
-        strippedHostname = strippedHostname.slice(0, 15); // TODO: Change me later
+        strippedHostname = strippedHostname.slice(0, 22);
         data.push({
             serverName: strippedHostname,
             playerCount: `${ server.clientNum }/${ server.maxClients }`,

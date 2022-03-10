@@ -62,7 +62,7 @@ export async function updateMessage(guildId, channelId, messageId, isFresh, clie
             Map: server.currentMap.alias,
             Gamemode: server.currentGameType.name,
             Game: server.game,
-            Connect_Command: `/connect ${ server.ip }:${ server.port }`,
+            connectCommand: `/connect ${ server.ip }:${ server.port }`,
         });
     }
 

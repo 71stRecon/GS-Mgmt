@@ -1,10 +1,12 @@
 import fs from "node:fs";
+import SQLite from "better-sqlite3";
 import { createRequire } from "node:module";
 import Discord from "discord.js";
 
 export const commands = [];
 
 const require = createRequire(import.meta.url);
+const sql = new SQLite(`./db.sqlite`);
 
 // inital setup process and token validation
 (async () =>
@@ -98,6 +100,8 @@ const client = new Discord.Client({
         else
             client.on(event.name, (...ourArguments) => event.execute(...ourArguments, Discord, client));
     }
+
+    await setupDB();
 })();
 
 // catch errors
@@ -107,3 +111,12 @@ process.on(`unhandledRejection`, (error) =>
 });
 
 client.login(token);
+
+/**
+ * @name setupDB
+ * @description Create the database if it doesn't exist.
+ */
+async function setupDB()
+{
+    sql.prepare(`CREATE TABLE IF NOT EXISTS updatingMessages (guildId TEXT, channelId TEXT, messageId TEXT);`).run();
+}

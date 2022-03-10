@@ -1,4 +1,8 @@
+import SQLite from "better-sqlite3";
 import * as utils from "../handlers/utils.js";
+import { updateMessage } from "../commands/gs/stats.js";
+
+const sql = new SQLite(`./db.sqlite`);
 
 export default {
     name: `ready`,
@@ -48,6 +52,19 @@ export default {
             console.error(`ERROR: This bot does not support multi-guild.\nPlease remove it from every guild except one.`);
             process.exit(1);
         }
+
+        // Every minute update message
+        setInterval(async function ()
+        {
+            const databaseMeta = await sql.prepare(`SELECT * FROM updatingMessages`).raw().all();
+            for (const meta of databaseMeta)
+            {
+                const guildId = meta[0];
+                const channelId = meta[1];
+                const messageId = meta[2];
+                await updateMessage(guildId, channelId, messageId, false, client);
+            }
+        }, 5000);
 
         console.log(`Bot is ready!`);
     },

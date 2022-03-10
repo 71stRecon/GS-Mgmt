@@ -45,6 +45,8 @@ export async function updateMessage(guildId, channelId, messageId, isFresh, clie
     {
         console.error(error);
     });
+    if (!response.ok)
+        return; // Bail out if iw4ma is down
     const json = await response.json();
 
     const data = [];

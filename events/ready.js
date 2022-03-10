@@ -64,7 +64,7 @@ export default {
                 const messageId = meta[2];
                 await updateMessage(guildId, channelId, messageId, false, client);
             }
-        }, 5000);
+        }, 60_000);
 
         console.log(`Bot is ready!`);
     },

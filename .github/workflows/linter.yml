@@ -1,5 +1,5 @@
 ---
-name: Lint Code Base
+name: "🎨 Lint"
 
 on:
   push:
@@ -8,19 +8,33 @@ on:
     branches: [master, main]
 
 jobs:
-  build:
-    name: Lint Code Base
+  lint:
     runs-on: ubuntu-latest
+    if: github.actor != 'dependabot[bot]' && !contains(github.event.head_commit.message, '[skip lint]')
 
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
-      - name: Install Dependencies
+      - name: "📦️ Install Dependencies"
         run: |
           npm install
 
-      - name: Lint Code Base
+      - name: "🎨 ESLint"
         run: npx eslint . --ext .js,.jsx,.ts,.tsx
+
+      - name: "🎨 Super-Linter"
+        uses: github/super-linter/slim@v4
+        env:
+          VALIDATE_ALL_CODEBASE: false
+          DEFAULT_BRANCH: main
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VALIDATE_JAVASCRIPT_ES: false
+          VALIDATE_JAVASCRIPT_STANDARD: false
+          VALIDATE_JSX: false
+          VALIDATE_TSX: false
+          VALIDATE_TYPESCRIPT_ES: false
+          VALIDATE_TYPESCRIPT_STANDARD: false
+          VALIDATE_JSCPD: false
+          VALIDATE_MARKDOWN: false

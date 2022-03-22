@@ -10,6 +10,6 @@ If you believe you have found a vulnerability, be sure you test it in the latest
 
 ## Reporting a Vulnerability
 
-If you believe you have discovered a vulnerability or exploit and ensured it happens on the latest commit, please reach out to `oss@sm2.gg`
+If you believe you have discovered a vulnerability or exploit and ensured it happens on the latest commit, please reach out to `c@chse.dev`
 
 **Do not make a GitHub Issue for a security vulnerability.**

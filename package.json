@@ -16,7 +16,7 @@
     "dependencies": {
         "better-sqlite3": "^7.5.0",
         "discord.js": "^13.6.0",
-        "prompt-sync": "^4.1.6",
+        "readline-sync": "^1.4.10",
         "puppeteer": "^13.5.1",
         "string-table": "^0.1.5",
         "node-fetch": "^3.2.0"

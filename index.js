@@ -29,16 +29,20 @@ export async function initSetup()
 
     fs.copyFileSync(`./config.json.example`, `./config.json`);
 
-    const prompt = require(`prompt-sync`)({ sigint: true });
+    var readlineSync = require(`readline-sync`);
 
     let token = ``;
     do
-        token = prompt(`Please enter your bot token: `);
+    {
+        token = readlineSync.question(`Please enter your bot token: `, {
+            hideEchoBack: true,
+        });
+    }
     while (token.length < 50);
 
     let seniorStaffID = ``;
     do
-        seniorStaffID = prompt(`Enter your Senior Staff Role ID: `);
+        seniorStaffID = readlineSync.question(`Enter your Senior Staff Role ID: `);
     while (seniorStaffID.length < 10);
 
     const config = require(`./config.json`);
@@ -101,7 +105,7 @@ const client = new Discord.Client({
             client.on(event.name, (...ourArguments) => event.execute(...ourArguments, Discord, client));
     }
 
-    await setupDB();
+    sql.prepare(`CREATE TABLE IF NOT EXISTS updatingMessages (guildId TEXT, channelId TEXT, messageId TEXT);`).run();
 })();
 
 // catch errors
@@ -111,12 +115,3 @@ process.on(`unhandledRejection`, (error) =>
 });
 
 client.login(token);
-
-/**
- * @name setupDB
- * @description Create the database if it doesn't exist.
- */
-async function setupDB()
-{
-    sql.prepare(`CREATE TABLE IF NOT EXISTS updatingMessages (guildId TEXT, channelId TEXT, messageId TEXT);`).run();
-}

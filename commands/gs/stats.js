@@ -50,6 +50,7 @@ export async function updateMessage(guildId, channelId, messageId, isFresh, clie
     const json = await response.json();
 
     const data = [];
+    let overallClients = 0;
 
     // For each object in the array, push into the data object.
     for (const server of json)
@@ -64,7 +65,11 @@ export async function updateMessage(guildId, channelId, messageId, isFresh, clie
             Game: server.game,
             connectCommand: `/connect ${ server.ip }:${ server.port }`,
         });
+        overallClients += server.clientNum;
     }
+
+    // cool custom status
+    client.user.setActivity(`with ${ overallClients } players!`, { type: `PLAYING` });
 
     const channel = await client.channels.cache.get(channelId);
     if (!isFresh)

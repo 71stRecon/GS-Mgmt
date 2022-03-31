@@ -45,9 +45,18 @@ export async function initSetup()
         seniorStaffID = readlineSync.question(`Enter your Senior Staff Role ID: `);
     while (seniorStaffID.length < 10);
 
+    let iw4maurl = ``;
+    do
+        iw4maurl = readlineSync.question(`Enter your IW4MAdmin URL: `);
+    while (!iw4maurl.startsWith(`http`));
+    if (iw4maurl.endsWith(`/`))
+        iw4maurl = iw4maurl.slice(0, -1);
+    iw4maurl += `/api/server/`;
+
     const config = require(`./config.json`);
     config.token = token.trim();
     config.seniorStaffID = seniorStaffID.trim();
+    config.iw4mainstance = iw4maurl.trim();
     fs.writeFileSync(`./config.json`, JSON.stringify(config, undefined, 4)); // save settings to config
 }
 

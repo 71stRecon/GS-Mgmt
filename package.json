@@ -14,7 +14,7 @@
     "author": "Chase - chse.dev",
     "license": "ISC",
     "dependencies": {
-        "better-sqlite3": "^7.5.0",
+        "better-sqlite3": "^7.5.1",
         "discord.js": "^13.6.0",
         "readline-sync": "^1.4.10",
         "puppeteer": "^13.5.2",

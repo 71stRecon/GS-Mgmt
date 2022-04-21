@@ -4,6 +4,14 @@ export default {
     slashPermissions
 };
 
+/**
+ * @name slashPermissions
+ * @description Handles permissions for slash commands.
+ * @param {*} command The command object.
+ * @param {*} guild The guild object.
+ * @param {*} array The array of permissions.
+ * @returns {Array} The array of permissions, capped to 9 roles + Guild Owner.
+ */
 export async function slashPermissions(command, guild, array)
 {
     const Roles = (commandName) =>

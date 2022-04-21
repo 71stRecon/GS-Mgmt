@@ -11,29 +11,29 @@ export default {
     {
         // cache stuff (this doesn't take long at all)
         await client.guilds.fetch()
-            .then(async function ()
+            .then(async () =>
             {
                 console.log(`Guilds cached.`);
                 // once guild is cached, let's cache the guild's roles
                 for (const guild of client.guilds.cache.values())
                 {
                     await guild.roles.fetch()
-                        .then(function ()
+                        .then(() =>
                         {
                             console.log(`Roles cached for ${ guild.name }.`);
                         })
-                        .catch(function (error)
+                        .catch((error) =>
                         {
                             console.error(`Error caching roles for ${ guild.name }.`, error);
                         });
 
                     // Cache channels
                     await guild.channels.fetch()
-                        .then(function ()
+                        .then(() =>
                         {
                             console.log(`Channels cached for ${ guild.name }.`);
                         })
-                        .catch(function (error)
+                        .catch((error) =>
                         {
                             console.error(`Error caching channels for ${ guild.name }.`, error);
                         });
@@ -54,7 +54,7 @@ export default {
         }
 
         // Every minute update message
-        setInterval(async function ()
+        setInterval(async () =>
         {
             const databaseMeta = await sql.prepare(`SELECT * FROM updatingMessages`).raw().all();
             for (const meta of databaseMeta)

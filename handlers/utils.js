@@ -5,6 +5,11 @@ export default {
     deploySlashCommands
 };
 
+/**
+ * @name deploySlashCommands
+ * @description Deploys slash commands.
+ * @param {object} guild The guild Object.
+ */
 export async function deploySlashCommands(guild)
 {
     const allCommands = commands;
@@ -13,7 +18,7 @@ export async function deploySlashCommands(guild)
         {
             slashPermissions(command, guild, allCommands);
         })
-        .catch(function (error)
+        .catch((error) =>
         {
             console.error(`Error setting slashcommands for ${ guild.name }.`, error);
         });

@@ -39,6 +39,14 @@ export default {
     }
 };
 
+/**
+ *
+ * @param {string} guildId guild id
+ * @param {string} channelId Channel to send msg / edit
+ * @param {string} messageId ID to edit
+ * @param {boolean} isFresh If true send message, else edit.
+ * @param {*} client Client Object.
+ */
 export async function updateMessage(guildId, channelId, messageId, isFresh, client)
 {
     const response = await fetch(`${ iw4mainstance }`).catch((error) =>

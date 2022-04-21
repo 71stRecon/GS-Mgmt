@@ -22,6 +22,9 @@ const sql = new SQLite(`./db.sqlite`);
 })();
 const { token } = require(`./config.json`);
 
+/**
+ *
+ */
 export async function initSetup()
 {
     if (fs.existsSync(`./config.json`))

@@ -2,7 +2,6 @@
 <h1><a href="https://71strecon.net/discord">71st Recon Management Bot</a><br>
 <a href="https://github.com/71stRecon/GS-Mgmt"><img alt="GitHub license" src="https://img.shields.io/github/license/71stRecon/GS-Mgmt"></a>
 <a href="https://github.com/71stRecon/GS-Mgmt/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/71stRecon/GS-Mgmt"></a>
-<a href="https://github.com/71stRecon/GS-Mgmt/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/71stRecon/GS-Mgmt"></a>
 <a href="https://github.com/71stRecon/GS-Mgmt/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/71stRecon/GS-Mgmt"></a>
 <a href="https://github.com/71stRecon/GS-Mgmt/actions/workflows/linter.yml"><img alt="GitHub Actions Status" src="https://github.com/71stRecon/GS-Mgmt/actions/workflows/linter.yml/badge.svg"></a>
 </h1></div>

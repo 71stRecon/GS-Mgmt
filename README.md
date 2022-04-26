@@ -1,5 +1,6 @@
 <div align="center">
 <h1><a href="https://71strecon.net/discord">71st Recon Management Bot</a><br>
+<a href="#"><img alt="Will provide support?" src="https://img.shields.io/maintenance/no/2022?label=Will%20provide%20support%3F"></a>
 <a href="https://github.com/71stRecon/GS-Mgmt"><img alt="GitHub license" src="https://img.shields.io/github/license/71stRecon/GS-Mgmt"></a>
 <a href="https://github.com/71stRecon/GS-Mgmt/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/71stRecon/GS-Mgmt"></a>
 <a href="https://github.com/71stRecon/GS-Mgmt/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/71stRecon/GS-Mgmt"></a>

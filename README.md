@@ -8,9 +8,22 @@
 </h1></div>
 
 # Table of Contents <!-- omit in toc -->
+- [Screenshots](#screenshots)
 - [Installation](#installation)
   - [Requirements](#requirements)
   - [Setup](#setup)
+
+## Screenshots
+
+<details>
+  <summary>Screenshots</summary>
+  
+* `/statsmsg`
+  * ![img](https://i.imgur.com/B6QzZcf.png)
+* `/restartgs`
+  * ![img](https://i.imgur.com/LLCtday.png)
+
+</details>
 
 ## Installation  
 

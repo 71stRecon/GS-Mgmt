@@ -17,11 +17,12 @@
 
 <details>
   <summary>Screenshots</summary>
-  
-* `/statsmsg`
-  * ![img](https://i.imgur.com/B6QzZcf.png)
-* `/restartgs`
-  * ![img](https://i.imgur.com/LLCtday.png)
+
+### `/statsmsg`: <!-- omit in toc -->
+![img](https://i.imgur.com/B6QzZcf.png)
+
+### `/restartgs`: <!-- omit in toc -->
+![img](https://i.imgur.com/LLCtday.png)
 
 </details>
 

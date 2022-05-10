@@ -7,8 +7,7 @@ const { seniorStaffID } = require(`../../config.json`);
 export default {
     name: `restartgs`,
     description: `Restarts various Game Servers.`,
-    defaultPermission: false,
-    permission: [`KICK_MEMBERS`],
+    defaultMemberPermissions: [`KICK_MEMBERS`],
     options: [
         {
             name: `iw4x`,

@@ -10,8 +10,7 @@ const sql = new SQLite(`./db.sqlite`);
 export default {
     name: `statsmsg`,
     description: `Sends stats message.`,
-    defaultPermission: false,
-    permission: [`KICK_MEMBERS`],
+    defaultMemberPermissions: [`KICK_MEMBERS`],
     options: [
         {
             name: `channel`,

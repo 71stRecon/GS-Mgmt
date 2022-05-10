@@ -4,7 +4,7 @@ import { createRequire } from "node:module";
 import fetch from "node-fetch";
 
 const require = createRequire(import.meta.url);
-const { seniorStaffID, iw4mainstance } = require(`../../config.json`);
+const { iw4mainstance } = require(`../../config.json`);
 const sql = new SQLite(`./db.sqlite`);
 
 export default {
@@ -24,11 +24,6 @@ export default {
     async execute(interaction, client)
     {
         await interaction.deferReply({ ephemeral: true });
-
-        const seniorStaff = interaction.guild.roles.cache.find((r) => r.id === seniorStaffID);
-        const guildOwner = interaction.guild.ownerId;
-        if (!interaction.member.roles.cache.has(seniorStaff.id) && interaction.member.id !== guildOwner)
-            return interaction.followUp(`You do not have permission to use this command.`);
 
         const channel = interaction.options.getChannel(`channel`);
         const channelId = channel.id;

@@ -37,20 +37,15 @@ export async function initSetup()
     let token = ``;
     do
     {
-        token = readlineSync.question(`Please enter your bot token: `, {
+        token = readlineSync.question(`Please enter your bot token (hidden): `, {
             hideEchoBack: true,
         });
     }
     while (token.length < 50);
 
-    let seniorStaffID = ``;
-    do
-        seniorStaffID = readlineSync.question(`Enter your Senior Staff Role ID: `);
-    while (seniorStaffID.length < 10);
-
     let iw4maurl = ``;
     do
-        iw4maurl = readlineSync.question(`Enter your IW4MAdmin URL: `);
+        iw4maurl = readlineSync.question(`Enter your IW4MAdmin URL (Example: https://servers.71strecon.net) : `);
     while (!iw4maurl.startsWith(`http`));
     if (iw4maurl.endsWith(`/`))
         iw4maurl = iw4maurl.slice(0, -1);
@@ -58,7 +53,6 @@ export async function initSetup()
 
     const config = require(`./config.json`);
     config.token = token.trim();
-    config.seniorStaffID = seniorStaffID.trim();
     config.iw4mainstance = iw4maurl.trim();
     fs.writeFileSync(`./config.json`, JSON.stringify(config, undefined, 4)); // save settings to config
 }

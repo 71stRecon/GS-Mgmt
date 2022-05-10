@@ -1,8 +1,5 @@
-import { createRequire } from "node:module";
+import { Puppeteer } from "puppeteer";
 import { spawn } from "node:child_process";
-
-const require = createRequire(import.meta.url);
-const { seniorStaffID } = require(`../../config.json`);
 
 export default {
     name: `restartgs`,
@@ -49,11 +46,6 @@ export default {
     async execute(interaction)
     {
         await interaction.deferReply();
-
-        const seniorStaff = interaction.guild.roles.cache.find((r) => r.id === seniorStaffID);
-        const guildOwner = interaction.guild.ownerId;
-        if (!interaction.member.roles.cache.has(seniorStaff.id) && interaction.member.id !== guildOwner)
-            return interaction.followUp(`You do not have permission to use this command.`);
 
         switch (interaction.options.getSubcommand())
         {
@@ -163,11 +155,10 @@ export default {
                 break;
             }
             case `iw4madmin`: {
-                const puppeteer = require(`puppeteer`);
                 try
                 {
                     // Use Puppeteer to open a new browser window (127.0.0.1:1624/Console)
-                    const browser = await puppeteer.launch();
+                    const browser = await Puppeteer.launch();
                     const page = await browser.newPage();
                     await page.goto(`http://127.0.0.1:1624/Console`);
                     await page.type(`#console_command_value`, `!restart`);

@@ -9,7 +9,9 @@ const require = createRequire(import.meta.url);
 const sql = new SQLite(`./db.sqlite`);
 
 // Setup the WebSocket to communicate with the launcher Application
-const launcherSocket = new WebSocket("ws://127.0.0.1:1337");
+import { WebSocketServer } from 'ws';
+
+const launcherSocket = new WebSocketServer({ port: 1337 });
 
 // inital setup process and token validation
 (async () =>
@@ -132,20 +134,10 @@ process.on(`unhandledRejection`, (error) =>
 client.login(token);
 
 // WebSocket Events
-launcherSocket.onopen = function(event) {
-    //Connections Inbound
-};
 
-launcherSocket.onclose = function(event) {
-    if (event.wasClean){
-        console.log("Launcher connection closed.")
-    } else {
-        console.error("Launcher connection closed dirty.");
-    }
-};
-
-launcherSocket.onmessage = function(event) {
-    var message = JSON.parse(event.data); // We're always going to expect this as a json string
+launcherSocket.on('connection', function connection(socket) {
+  socket.on('message', function message(data) {
+    var message = JSON.parse(data); // We're always going to expect this as a json string
 
     for(const thisMessage of message){
         switch(thisMessage.header){
@@ -166,4 +158,12 @@ launcherSocket.onmessage = function(event) {
             }
         }
     }
-}
+  });
+
+  function SendMessage(message) {
+    launcherSocket.clients.forEach(function each(client) {
+      if (client.readyState === WebSocket.OPEN) {
+        client.send(json.stringify(data));
+      }
+    });
+  }

@@ -210,7 +210,7 @@ export default {
                     header = "updateall",
                 }
 
-                launcherSocket.send(data);
+                SendMessage(data);
                 break;
             }
         }

@@ -1,5 +1,6 @@
 import { createRequire } from "node:module";
 import { spawn } from "node:child_process";
+import * as socket from "../../index.js";
 
 const require = createRequire(import.meta.url);
 const { seniorStaffID } = require(`../../config.json`);
@@ -216,7 +217,7 @@ export default {
                     body: "",
                 };
 
-                SendMessage(data);
+                socket.SendPacket(data);
                 break;
             }
         }

@@ -45,6 +45,11 @@ export default {
             description: `Restarts Sparkers Discord Bot.`,
             type: `SUB_COMMAND`,
         },
+        {
+            name: `updateall`,
+            description: `Restart and update all servers.`,
+            type: `SUB_COMMAND`,
+        },
     ],
 
     async execute(interaction)

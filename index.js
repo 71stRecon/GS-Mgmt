@@ -9,7 +9,7 @@ const require = createRequire(import.meta.url);
 const sql = new SQLite(`./db.sqlite`);
 
 // Setup the WebSocket to communicate with the launcher Application
-import { WebSocketServer } from 'ws';
+import WebSocket, { WebSocketServer } from 'ws';
 
 const launcherSocket = new WebSocketServer({ port: 1337 });
 
@@ -163,8 +163,8 @@ launcherSocket.on('connection', function connection(socket) {
 
 export function SendPacket(message) {
     launcherSocket.clients.forEach(function each(client) {
-      if (client.readyState === WebSocket.OPEN) {
-        client.send(json.stringify(data));
+      if (client.readyState === client.WebSocket.OPEN) {
+        client.send(JSON.stringify(data));
       }
     });
 };

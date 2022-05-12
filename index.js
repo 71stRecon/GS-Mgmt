@@ -159,11 +159,12 @@ launcherSocket.on('connection', function connection(socket) {
         }
     }
   });
+});
 
-  function SendMessage(message) {
+function SendMessage(message) {
     launcherSocket.clients.forEach(function each(client) {
       if (client.readyState === WebSocket.OPEN) {
         client.send(json.stringify(data));
       }
     });
-  }
+};

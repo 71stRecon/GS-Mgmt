@@ -17,7 +17,7 @@
         "better-sqlite3": "7.5.3",
         "discord.js": "13.7.0",
         "readline-sync": "1.4.10",
-        "puppeteer": "14.2.0",
+        "puppeteer": "14.2.1",
         "string-table": "0.1.5",
         "node-fetch": "3.2.3"
     },

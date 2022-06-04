@@ -201,10 +201,10 @@ export default {
                 break;
             }
             case `updateall`: { // I'm hopinh that const launcherSocket is visible within this scope.
-                interaction.followUp("Sending update request to all..");
+                interaction.followUp(`Sending update request to all..`);
                 var data = {
-                    header: "updateall",
-                    body: "",
+                    header: `updateall`,
+                    body: ``,
                 };
 
                 socket.SendPacket(data);

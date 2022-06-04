@@ -8,6 +8,11 @@ export const commands = [];
 const require = createRequire(import.meta.url);
 const sql = new SQLite(`./db.sqlite`);
 
+// Setup the WebSocket to communicate with the launcher Application
+import WebSocket, { WebSocketServer } from 'ws';
+
+const launcherSocket = new WebSocketServer({ port: 1337 });
+
 // inital setup process and token validation
 (async () =>
 {
@@ -121,3 +126,39 @@ process.on(`unhandledRejection`, (error) =>
 });
 
 client.login(token);
+
+// WebSocket Events
+
+launcherSocket.on('connection', function connection(socket) {
+  socket.on('message', function message(data) {
+    var message = JSON.parse(data); // We're always going to expect this as a json string
+
+    for(const thisMessage of message){
+        switch(thisMessage.header){
+            case "updatecomplete": {
+                var status = thisMessage.body;
+                console.log("Launcher updates completed");
+
+                break;
+            }
+            case "updateconfirmed": {
+                // launcher handshake confirming it's updating.
+                console.log("Launcher updates in progress");
+                break;
+            }
+            case "updateerror": {
+                console.error(`Launcher Error::${status}`);
+                break;
+            }
+        }
+    }
+  });
+});
+
+export function SendPacket(message) {
+    launcherSocket.clients.forEach(function each(client) {
+      if (client.readyState === client.WebSocket.OPEN) {
+        client.send(JSON.stringify(data));
+      }
+    });
+};

@@ -1,5 +1,6 @@
 import { Puppeteer } from "puppeteer";
 import { spawn } from "node:child_process";
+import * as socket from "../../index.js";
 
 export default {
     name: `restartgs`,
@@ -39,6 +40,11 @@ export default {
         {
             name: `sparker`,
             description: `Restarts Sparkers Discord Bot.`,
+            type: `SUB_COMMAND`,
+        },
+        {
+            name: `updateall`,
+            description: `Restart and update all servers.`,
             type: `SUB_COMMAND`,
         },
     ],
@@ -192,6 +198,16 @@ export default {
                 });
 
                 interaction.followUp(`Attempted to restart Sparker's Discord IW4MAdmin Integration...`);
+                break;
+            }
+            case `updateall`: { // I'm hopinh that const launcherSocket is visible within this scope.
+                interaction.followUp("Sending update request to all..");
+                var data = {
+                    header: "updateall",
+                    body: "",
+                };
+
+                socket.SendPacket(data);
                 break;
             }
         }

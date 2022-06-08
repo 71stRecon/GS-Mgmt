@@ -4,7 +4,7 @@ import { createRequire } from "node:module";
 import Discord from "discord.js";
 
 // Setup the WebSocket to communicate with the launcher Application
-import { WebSocketServer } from 'node:ws';
+import { WebSocketServer } from 'ws';
 
 export const commands = [];
 

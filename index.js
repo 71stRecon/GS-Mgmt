@@ -13,8 +13,10 @@ const sql = new SQLite(`./db.sqlite`);
 
 const launcherSocket = new WebSocketServer({ port: 1337 });
 
-// inital setup process and token validation
-(async () =>
+/**
+ * inital setup process and token validation
+ */
+async function init()
 {
     await initSetup();
 
@@ -24,7 +26,10 @@ const launcherSocket = new WebSocketServer({ port: 1337 });
         console.log(`Invalid token length detected. Please check your config.json file.`);
         process.exit(1);
     }
-})();
+}
+
+await init();
+
 const { token } = require(`./config.json`);
 
 /**
@@ -75,8 +80,10 @@ const client = new Discord.Client({
     ],
 });
 
-// load files
-(async () =>
+/**
+ * load files
+ */
+async function loadEventsAndCommands()
 {
     // slash commands
     client.commands = new Discord.Collection();
@@ -117,7 +124,9 @@ const client = new Discord.Client({
     }
 
     sql.prepare(`CREATE TABLE IF NOT EXISTS updatingMessages (guildId TEXT, channelId TEXT, messageId TEXT);`).run();
-})();
+}
+
+await loadEventsAndCommands();
 
 // catch errors
 process.on(`unhandledRejection`, (error) =>

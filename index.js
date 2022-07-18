@@ -23,6 +23,7 @@ async function init()
     const { token } = require(`./config.json`);
     if (token.length < 50)
     {
+        // eslint-disable-next-line no-restricted-syntax
         console.log(`Invalid token length detected. Please check your config.json file.`);
         process.exit(1);
     }
@@ -68,15 +69,15 @@ export async function initSetup()
 }
 
 const client = new Discord.Client({
-    partials: [`CHANNEL`],
+    partials: [Discord.Partials.Channel],
     intents: [
-        Discord.Intents.FLAGS.GUILDS,
-        Discord.Intents.FLAGS.GUILD_MEMBERS,
-        Discord.Intents.FLAGS.GUILD_BANS,
-        Discord.Intents.FLAGS.GUILD_MESSAGES,
-        Discord.Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
-        Discord.Intents.FLAGS.DIRECT_MESSAGES,
-        Discord.Intents.FLAGS.GUILD_VOICE_STATES,
+        Discord.GatewayIntentBits.Guilds,
+        Discord.GatewayIntentBits.GuildMembers,
+        Discord.GatewayIntentBits.GuildBans,
+        Discord.GatewayIntentBits.GuildMessages,
+        Discord.GatewayIntentBits.GuildMessageReactions,
+        Discord.GatewayIntentBits.DirectMessages,
+        Discord.GatewayIntentBits.GuildVoiceStates,
     ],
 });
 
@@ -109,6 +110,7 @@ async function loadEventsAndCommands()
         }
     }
 
+    // eslint-disable-next-line no-restricted-syntax
     console.log(`Commands loaded.`);
 
     // events
@@ -150,11 +152,13 @@ launcherSocket.on(`connection`, (socket) =>
             {
                 case `updatecomplete`: {
                     var status = thisMessage.body;
+                    // eslint-disable-next-line no-restricted-syntax
                     console.log(`Launcher updates completed`);
                     break;
                 }
                 case `updateconfirmed`: {
                     // launcher handshake confirming it's updating.
+                    // eslint-disable-next-line no-restricted-syntax
                     console.log(`Launcher updates in progress`);
                     break;
                 }

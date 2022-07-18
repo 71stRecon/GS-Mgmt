@@ -1,6 +1,7 @@
 import SQLite from "better-sqlite3";
 import st from "string-table";
 import { createRequire } from "node:module";
+import { ApplicationCommandType } from "discord.js";
 import fetch from "node-fetch";
 
 const require = createRequire(import.meta.url);
@@ -15,7 +16,7 @@ export default {
         {
             name: `channel`,
             description: `Where?`,
-            type: `CHANNEL`,
+            type: ApplicationCommandType.channel,
             channelTypes: [`GUILD_TEXT`],
             required: true,
         },

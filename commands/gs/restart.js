@@ -1,6 +1,7 @@
-import { Puppeteer } from "puppeteer";
+/* eslint-disable no-restricted-syntax */
+import * as puppeteer from "puppeteer";
 import { spawn } from "node:child_process";
-import * as socket from "../../index.js";
+import { ApplicationCommandOptionType } from "discord.js";
 
 export default {
     name: `restartgs`,
@@ -10,42 +11,37 @@ export default {
         {
             name: `iw4x`,
             description: `Restarts IW4x Servers.`,
-            type: `SUB_COMMAND`,
+            type: ApplicationCommandOptionType.Subcommand,
         },
         {
             name: `t5`,
             description: `Restarts T5 Servers.`,
-            type: `SUB_COMMAND`,
+            type: ApplicationCommandOptionType.Subcommand,
         },
         {
             name: `pluto`,
             description: `Restarts Plutonium Servers.`,
-            type: `SUB_COMMAND`,
+            type: ApplicationCommandOptionType.Subcommand,
         },
         {
             name: `iw6x`,
             description: `Restarts IW6x Servers.`,
-            type: `SUB_COMMAND`,
+            type: ApplicationCommandOptionType.Subcommand,
         },
         {
             name: `all`,
             description: `Restarts All Game Servers.`,
-            type: `SUB_COMMAND`,
+            type: ApplicationCommandOptionType.Subcommand,
         },
         {
             name: `iw4madmin`,
             description: `Restarts IW4MAdmin.`,
-            type: `SUB_COMMAND`,
+            type: ApplicationCommandOptionType.Subcommand,
         },
         {
             name: `sparker`,
             description: `Restarts Sparkers Discord Bot.`,
-            type: `SUB_COMMAND`,
-        },
-        {
-            name: `updateall`,
-            description: `Restart and update all servers.`,
-            type: `SUB_COMMAND`,
+            type: ApplicationCommandOptionType.Subcommand,
         },
     ],
 
@@ -164,7 +160,7 @@ export default {
                 try
                 {
                     // Use Puppeteer to open a new browser window (127.0.0.1:1624/Console)
-                    const browser = await Puppeteer.launch();
+                    const browser = await puppeteer.launch();
                     const page = await browser.newPage();
                     await page.goto(`http://127.0.0.1:1624/Console`);
                     await page.type(`#console_command_value`, `!restart`);
@@ -198,16 +194,6 @@ export default {
                 });
 
                 interaction.followUp(`Attempted to restart Sparker's Discord IW4MAdmin Integration...`);
-                break;
-            }
-            case `updateall`: { // I'm hopinh that const launcherSocket is visible within this scope.
-                interaction.followUp(`Sending update request to all..`);
-                var data = {
-                    header: `updateall`,
-                    body: ``,
-                };
-
-                socket.SendPacket(data);
                 break;
             }
         }

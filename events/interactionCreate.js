@@ -1,8 +1,13 @@
+import { InteractionType } from "discord.js";
+
 export default {
     name: `interactionCreate`,
     async execute(interaction, Discord, client)
     {
-        if (interaction.isCommand() || interaction.isContextMenu() || interaction.isUserContextMenu() || interaction.isMessageContextMenu())
+        if (interaction.type === InteractionType.ApplicationCommand
+            || interaction.type === InteractionType.isContextMenu
+            || interaction.type === InteractionType.isUserContextMenu
+            || interaction.type === InteractionType.isMessageContextMenu)
         {
             const command = client.commands.get(interaction.commandName);
             try

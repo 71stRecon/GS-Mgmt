@@ -13,33 +13,10 @@ export default {
         await client.guilds.fetch()
             .then(async () =>
             {
+                // eslint-disable-next-line no-restricted-syntax
                 console.log(`Guilds cached.`);
-                // once guild is cached, let's cache the guild's roles
                 for (const guild of client.guilds.cache.values())
-                {
-                    await guild.roles.fetch()
-                        .then(() =>
-                        {
-                            console.log(`Roles cached for ${ guild.name }.`);
-                        })
-                        .catch((error) =>
-                        {
-                            console.error(`Error caching roles for ${ guild.name }.`, error);
-                        });
-
-                    // Cache channels
-                    await guild.channels.fetch()
-                        .then(() =>
-                        {
-                            console.log(`Channels cached for ${ guild.name }.`);
-                        })
-                        .catch((error) =>
-                        {
-                            console.error(`Error caching channels for ${ guild.name }.`, error);
-                        });
-
                     await utils.deploySlashCommands(guild);
-                }
             });
 
         if (client.guilds.cache.size === 0)
@@ -66,6 +43,7 @@ export default {
             }
         }, 60_000);
 
+        // eslint-disable-next-line no-restricted-syntax
         console.log(`Bot is ready!`);
     },
 };

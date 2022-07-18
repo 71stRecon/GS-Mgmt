@@ -20,7 +20,7 @@
         "puppeteer": "15.4.0",
         "readline-sync": "1.4.10",
         "string-table": "0.1.5",
-        "ws": "^8.8.0"
+        "ws": "^8.8.1"
     },
     "devDependencies": {
         "eslint": "8.20.0",

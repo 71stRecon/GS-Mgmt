@@ -15,7 +15,7 @@
     "license": "ISC",
     "dependencies": {
         "better-sqlite3": "7.6.2",
-        "discord.js": "13.8.1",
+        "discord.js": "14.0.2",
         "node-fetch": "3.2.3",
         "puppeteer": "15.4.0",
         "readline-sync": "1.4.10",

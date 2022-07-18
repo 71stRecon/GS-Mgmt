@@ -6,7 +6,7 @@ import { ApplicationCommandOptionType } from "discord.js";
 export default {
     name: `restartgs`,
     description: `Restarts various Game Servers.`,
-    defaultMemberPermissions: [`KICK_MEMBERS`],
+    defaultMemberPermissions: [`KickMembers`],
     options: [
         {
             name: `iw4x`,

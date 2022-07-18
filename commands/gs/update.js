@@ -3,7 +3,7 @@ import { SendPacket } from "../../index.js";
 export default {
     name: `update`,
     description: `Updates Game Servers.`,
-    defaultMemberPermissions: [`KICK_MEMBERS`],
+    defaultMemberPermissions: [`KickMembers`],
     options: [],
 
     async execute(interaction)
